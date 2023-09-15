@@ -29,6 +29,7 @@
 
 #include "../mwbase/environment.hpp"
 #include "../mwbase/journal.hpp"
+#include "../mwbase/luamanager.hpp"
 #include "../mwbase/mechanicsmanager.hpp"
 #include "../mwbase/scriptmanager.hpp"
 #include "../mwbase/soundmanager.hpp"
@@ -316,6 +317,9 @@ namespace MWDialogue
                 title = dialogue.mStringId;
 
             MWScript::InterpreterContext interpreterContext(&mActor.getRefData().getLocals(), mActor);
+
+            MWBase::Environment::get().getLuaManager()->topicSelected(info->mResponse);
+
             callback->addResponse(title, Interpreter::fixDefinesDialog(info->mResponse, interpreterContext));
 
             if (dialogue.mType == ESM::Dialogue::Topic)

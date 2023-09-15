@@ -20,7 +20,7 @@ namespace MWLua
         {
             registerEngineHandlers({ &mConsoleCommandHandlers, &mKeyPressHandlers, &mKeyReleaseHandlers,
                 &mControllerButtonPressHandlers, &mControllerButtonReleaseHandlers, &mActionHandlers, &mOnFrameHandlers,
-                &mTouchpadPressed, &mTouchpadReleased, &mTouchpadMoved, &mQuestUpdate, &mUiModeChanged });
+                &mTouchpadPressed, &mTouchpadReleased, &mTouchpadMoved, &mQuestUpdate, &mTopicSelect, &mUiModeChanged });
         }
 
         void processInputEvent(const MWBase::LuaManager::InputEvent& event)
@@ -57,6 +57,7 @@ namespace MWLua
 
         void onFrame(float dt) { callEngineHandlers(mOnFrameHandlers, dt); }
         void onQuestUpdate(std::string_view questId, int stage) { callEngineHandlers(mQuestUpdate, questId, stage); }
+        void onTopicSelect(std::string_view response) { callEngineHandlers(mTopicSelect, response); }
 
         bool consoleCommand(
             const std::string& consoleMode, const std::string& command, const sol::object& selectedObject)
@@ -86,6 +87,7 @@ namespace MWLua
         EngineHandlerList mTouchpadReleased{ "onTouchRelease" };
         EngineHandlerList mTouchpadMoved{ "onTouchMove" };
         EngineHandlerList mQuestUpdate{ "onQuestUpdate" };
+        EngineHandlerList mTopicSelect{ "onTopicSelect" };
         EngineHandlerList mUiModeChanged{ "_onUiModeChanged" };
     };
 
