@@ -317,10 +317,11 @@ namespace MWDialogue
                 title = dialogue.mStringId;
 
             MWScript::InterpreterContext interpreterContext(&mActor.getRefData().getLocals(), mActor);
+            std::string parsed_text = Interpreter::fixDefinesDialog(info->mResponse, interpreterContext);
 
-            MWBase::Environment::get().getLuaManager()->topicSelected(info->mResponse);
+            MWBase::Environment::get().getLuaManager()->topicSelected(parsed_text);
 
-            callback->addResponse(title, Interpreter::fixDefinesDialog(info->mResponse, interpreterContext));
+            callback->addResponse(title, parsed_text);
 
             if (dialogue.mType == ESM::Dialogue::Topic)
             {
