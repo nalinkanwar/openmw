@@ -202,14 +202,14 @@ namespace MWLua
         }
     }
 
-    void LuaManager::topicSelected(const std::string& response)
+    void LuaManager::topicSelected(const ESM::DialInfo& info, const MWWorld::Ptr& actor)
     {
         if (mPlayer.isEmpty())
             return; // The game is not started yet.
         PlayerScripts* playerScripts = dynamic_cast<PlayerScripts*>(mPlayer.getRefData().getLuaScripts());
         if (playerScripts)
         {
-            playerScripts->onTopicSelect(response);
+            playerScripts->onTopicSelect(info, actor);
         }
     }
 

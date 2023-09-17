@@ -87,7 +87,7 @@ namespace MWLua
         }
         void objectTeleported(const MWWorld::Ptr& ptr) override;
         void questUpdated(const ESM::RefId& questId, int stage) override;
-        void topicSelected(const std::string& response) override;
+        void topicSelected(const ESM::DialInfo& info, const MWWorld::Ptr& actor) override;
         void uiModeChanged(const MWWorld::Ptr& arg) override;
 
         MWBase::LuaManager::ActorControls* getActorControls(const MWWorld::Ptr&) const override;

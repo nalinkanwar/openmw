@@ -26,6 +26,7 @@ namespace ESM
     class ESMReader;
     class ESMWriter;
     class RefId;
+    class DialInfo;
     struct LuaScripts;
 }
 
@@ -54,7 +55,7 @@ namespace MWBase
         virtual void useItem(const MWWorld::Ptr& object, const MWWorld::Ptr& actor) = 0;
         virtual void exteriorCreated(MWWorld::CellStore& cell) = 0;
         virtual void questUpdated(const ESM::RefId& questId, int stage) = 0;
-        virtual void topicSelected(const std::string& response) = 0;
+        virtual void topicSelected(const ESM::DialInfo& info, const MWWorld::Ptr& actor) = 0;
 
         // `arg` is either forwarded from MWGui::pushGuiMode or empty
         virtual void uiModeChanged(const MWWorld::Ptr& arg) = 0;

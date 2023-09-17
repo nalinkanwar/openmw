@@ -48,6 +48,7 @@
 #include "types/types.hpp"
 #include "uibindings.hpp"
 #include "vfsbindings.hpp"
+#include "topicbindings.hpp"
 
 namespace MWLua
 {
@@ -360,7 +361,8 @@ namespace MWLua
             { "openmw.core", initCorePackage(context) },
             { "openmw.types", initTypesPackage(context) },
             { "openmw.util", LuaUtil::initUtilPackage(lua) },
-            { "openmw.vfs", initVFSPackage(context) },
+            { "openmw.vfs", initVFSPackage(context) }, 
+            { "openmw.topic", initTopicBindings(context) }
         };
     }
 

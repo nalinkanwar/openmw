@@ -319,7 +319,7 @@ namespace MWDialogue
             MWScript::InterpreterContext interpreterContext(&mActor.getRefData().getLocals(), mActor);
             std::string parsed_text = Interpreter::fixDefinesDialog(info->mResponse, interpreterContext);
 
-            MWBase::Environment::get().getLuaManager()->topicSelected(parsed_text);
+            MWBase::Environment::get().getLuaManager()->topicSelected(*info, mActor);
 
             callback->addResponse(title, parsed_text);
 
