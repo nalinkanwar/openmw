@@ -57,7 +57,7 @@ namespace MWLua
 
         void onFrame(float dt) { callEngineHandlers(mOnFrameHandlers, dt); }
         void onQuestUpdate(std::string_view questId, int stage) { callEngineHandlers(mQuestUpdate, questId, stage); }
-        void onTopicSelect(const ESM::DialInfo& info, const MWWorld::Ptr& actor) 
+        void onTopicSelect(const ESM::DialInfo& info, const MWLua::LObject& actor) 
         {
             callEngineHandlers(mTopicSelect, info, actor);
         }

@@ -209,7 +209,7 @@ namespace MWLua
         PlayerScripts* playerScripts = dynamic_cast<PlayerScripts*>(mPlayer.getRefData().getLuaScripts());
         if (playerScripts)
         {
-            playerScripts->onTopicSelect(info, actor);
+            playerScripts->onTopicSelect(info, LObject(actor));
         }
     }
 
